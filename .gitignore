@@ -1,0 +1,16 @@
+# Byte-compiled / Python caches
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+venv/
+backtester_env/
+
+# Data, logs, model artifacts
+data/
+models/return_predictor.h5
+models/training_history.csv
+logs/
+
+# IDE settings
+.vscode/

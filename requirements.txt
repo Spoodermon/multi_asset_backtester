@@ -1,0 +1,10 @@
+# Dependency requirements for multi_asset_backtester for reproducible setups
+numpy==1.26.0
+pandas
+scitkit-learn>=1.2.2
+yfinance
+pyarrow         # for Parquet
+boto3           # for AWS (we’ll use it later)
+matplotlib
+tensorflow
+vectorbt
