@@ -1,27 +1,38 @@
-# multi_asset_backtester
+# Quantitative Multi-Asset Backtesting Framework
 
-A Python package for multi-asset backtesting. This project provides tools to fetch, store, and process financial data for backtesting strategies across multiple assets.
+This repository contains an event-driven backtesting framework in Python, engineered to develop and validate quantitative trading strategies using advanced machine learning techniques. The entire system is built as a modular and installable Python package to mirror industry-standard development practices.
 
-## Project Structure
+## Core Thesis
 
-- `data_fetcher/`: Contains modules for fetching and processing data.
-- `data/`: Directory for raw CSV or Parquet files.
-- `requirements.txt`: Python dependencies.
-- `setup.py`: Makes this package pip-installable.
+This framework is built on the thesis that deep learning models can identify and exploit complex, non-linear patterns in financial time-series data that are often missed by traditional factor models. The system is designed to rigorously test this by integrating custom TensorFlow models into a robust, walk-forward validation pipeline.
 
-## Installation
+## Key Architectural Features
 
-```sh
-pip install .
-```
+- **Modular & Installable:** Structured as a proper Python package (`setup.py`, `requirements.txt`), ensuring clean dependencies and reusability.
+- **Scalable Data Pipelines:** Features a dedicated `data_fetcher` that uses `yfinance` and saves data in the high-performance Parquet format to expedite read/write operations.
+- **Advanced Feature Engineering:** Leverages Scikit-learn's `Pipeline` and `FeatureUnion` with custom transformers (`Momentum`, `Z-Score`) to create a extensible feature engineering workflow.
+- **Rigorous Model Training:** The `models` package contains a training pipeline, including proper train/validation/test splitting and TensorFlow callbacks like `EarlyStopping` to prevent overfitting.
+- **Walk-Forward Validation:** The framework's core is a `walk_forward.py` script that performs robust out-of-sample testing. It retrains the ML model on rolling windows of data to simulate realistic production trading environments and avoid lookahead bias.
+- **Performance Analytics:** The backtesting engine uses `vectorbt` and automatically generates key performance metrics (e.g., Sharpe Ratio, Total Return) and visualizations for each validation fold.
 
-## Usage
+## Installation and Usage
 
-Import and use the data fetcher in your scripts:
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/Spoodermon/multi_asset_backtester.git](https://github.com/Spoodermon/multi_asset_backtester.git)
+    cd multi_asset_backtester
+    ```
 
-```python
-from data_fetcher.fetcher import fetch_data
-```
+2.  **Install the package in editable mode:**
+    ```bash
+    pip install -e .
+    ```
+    *(This will also install all dependencies from `requirements.txt`)*
+
+3.  **Run the full pipeline:**
+    ```bash
+    python scripts/walk_forward.py
+    ```
 
 ## License
 

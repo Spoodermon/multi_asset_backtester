@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 
 # 1. Parameters
 DATA_DIR = "data"
-TICKERS  = ["AAPL", "MSFT"]
+TICKERS  = ["AAPL", "MSFT", "QQQ", "GS"]
 # define rolling windows: (train_start, train_end, test_start, test_end)
 WINDOWS = [
     ("2020-01-01","2021-12-31","2022-01-01","2022-06-30"),
@@ -100,8 +100,6 @@ res_df = pd.DataFrame(results)
 res_df['test_end'] = pd.to_datetime(res_df['test_end'])
 print(res_df)
 
-# 0) Ensure datetime type
-
 
 # 1) Boxplot of Sharpe by Ticker
 sharpe_pivot = res_df.pivot(
@@ -110,7 +108,7 @@ sharpe_pivot = res_df.pivot(
     values='sharpe'
 )
 
-#Use pandas’ .plot.box() which deals with shapes internally
+# Use pandas’ .plot.box() which deals with shapes internally
 ax = sharpe_pivot.plot.box(
     title='Sharpe Ratio Distribution by Ticker',
     ylabel='Sharpe Ratio'

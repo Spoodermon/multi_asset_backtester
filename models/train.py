@@ -6,7 +6,7 @@ from tensorflow import keras
 
 # 1. Parameters
 FEATURE_DIR = "data"
-TICKERS = ["AAPL", "MSFT"]
+TICKERS  = ["AAPL", "MSFT", "QQQ", "GS"]
 TEST_SIZE = 0.2
 VAL_SIZE = 0.1
 RANDOM_SEED = 42 #HHG2U

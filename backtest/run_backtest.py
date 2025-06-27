@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 DATA_DIR   = "data"
 MODEL_PATH = "models/return_predictor.h5"
-TICKERS    = ["AAPL", "MSFT"]
+TICKERS  = ["AAPL", "MSFT", "QQQ", "GS"]
 
 def load_features_and_prices(tickers):
     feats, prices = {}, {}
@@ -70,5 +70,6 @@ if __name__ == "__main__":
     plt.tight_layout()
     plt.show()
     
-    pf["AAPL"].orders.plot()
+    # Plot the order history for the "AAPL" ticker
+    #pf["AAPL"].orders.plot()
 

@@ -6,7 +6,7 @@ from features.pipeline import build_feature_pipeline
 if __name__ == "__main__":
     # Ensure data exists
     fetcher = EquityFetcher(data_dir="data")
-    fetcher.fetch_and_save(tickers=["AAPL", "MSFT"],
+    fetcher.fetch_and_save(tickers=["AAPL", "MSFT", "QQQ", "GS"],
                            start="2020-01-01")
     
     pipeline = build_feature_pipeline()
@@ -15,7 +15,7 @@ if __name__ == "__main__":
     cols = union.get_feature_names_out()
     
     # Load, transform, and save features
-    for ticker in ["AAPL", "MSFT"]:
+    for ticker in ["AAPL", "MSFT", "QQQ", "GS"]:
         df = pd.read_parquet(f"data/{ticker}.parquet")
         
         # 1. Generate numpy array

@@ -11,7 +11,8 @@ def create_feature_union() -> FeatureUnion:
         ("momentum_60", MomemntumTransformer(window=60, price_col="Close")),
         ("zscore", ZScoreTransformer(window=20, price_col="Close")),
         # Add more transformers as needed
-    ])
+    ]) # TO-DO: mom20 and mom60 are highly correlated, can lead to unstable coefficient estimates in linear models.
+    # Orthogonalize via PCA on just the data set 
 
 def build_feature_pipeline() -> Pipeline:
     """
